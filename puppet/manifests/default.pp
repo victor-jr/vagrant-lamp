@@ -7,17 +7,17 @@ package { 'apache2':
 	require => Exec['apt-get update'],
 }
 
-package { 'php5-cli':
+package { 'php-cli':
 	ensure => present,
 	require => Exec['apt-get update'],
 }
 
-package { 'php5-fpm':
+package { 'php':
 	ensure => present,
 	require => Exec['apt-get update'],
 }
 
-package { 'libapache2-mod-php5':
+package { 'libapache2-mod-php7.0':
 	ensure => present,
 	require => Exec['apt-get update'],
 }
@@ -27,9 +27,9 @@ service { 'apache2':
 	require => Package['apache2'],
 }
 
-service { 'php5-fpm':
+service { 'php7.0-fpm':
 	ensure => running,
-	require => Package['php5-fpm'],
+	require => Package['php'],
 }
 
 file { 'vagrant-apache2':
